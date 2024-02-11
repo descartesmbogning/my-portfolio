@@ -1,0 +1,107 @@
+{% extends "base.html" %}  <!-- Assumes you have a base.html for common layout like header, footer -->
+
+{% block content %}
+<header>
+    <!-- Add your navigation bar, logo, etc. here -->
+</header>
+
+<main>
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h1>Welcome to My Portfolio</h1>
+        <p>{{ home_page_content.welcome_message }}</p>
+        {% if home_page_content.background_image %}
+        <img src="{{ home_page_content.background_image.url }}" alt="Professional Headshot" class="headshot-image">
+        style="background-image: url('{{ home_page_content.background_image.url }}');
+        {% endif %}
+    </section>
+
+    <!-- <section class="welcome-section" style="background-image: url('{{ home_page_content.background_image.url }}');">
+        <!-- Content of your home section goes here -->
+    <!-- </section> --> -->
+    
+    
+    <!-- Latest Publications Section -->
+    <section class="latest-publications">
+        <h2>Latest Publications</h2>
+        <div class="publications-container">
+            {% for publication in latest_publications %}
+            <div class="publication-card">
+                {% if publication.thumbnail %} <!-- Check if a thumbnail is available -->
+                <img src="{{ publication.thumbnail.url }}" alt="Thumbnail" class="publication-thumbnail">
+                {% endif %}
+                <div class="publication-details">
+                    <strong>{{ publication.title }}</strong>,
+                    <em>Published in: {{ publication.published_in }}</em> ({{ publication.publication_date }}).
+                    <p id="summary-short-{{ publication.id }}">
+                        {{ publication.abstract|truncatewords:20 }}
+                        <a href="javascript:void(0);" onclick="toggleContent('summary-short-{{ publication.id }}', 'abstract-full-{{ publication.id }}');">see more</a>
+                    </p>
+                    <div id="abstract-full-{{ publication.id }}" class="abstract-full" style="display:none;">
+                        {{ publication.abstract }}
+                        <a href="javascript:void(0);" onclick="toggleContent('summary-short-{{ publication.id }}', 'abstract-full-{{ publication.id }}');">see less</a>
+                    </div>
+                    {% if publication.publication_link %} <!-- Displaying publication link -->
+                    <a href="{{ publication.publication_link }}" target="_blank">Read Online</a>
+                    {% endif %}
+                    {% if publication.pdf_file %} <!-- Displaying link to PDF file if exists -->
+                    <a href="{{ publication.pdf_file.url }}" target="_blank">Download PDF</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Current Project Section -->
+    <section class="current-project">
+        <h2>Current Project</h2>
+        <div class="project-details">
+            <h3>{{ current_project.title }}</h3>
+            <p id="summary-short-project-{{ current_project.id }}">
+                {{ current_project.summary|truncatewords:20 }}
+                <a href="javascript:void(0);" onclick="toggleContent('summary-short-project-{{ current_project.id }}', 'summary-full-project-{{ current_project.id }}');">see more</a>
+            </p>
+            <div id="summary-full-project-{{ current_project.id }}" class="abstract-full" style="display:none;">
+                {{ current_project.summary }}
+                <a href="javascript:void(0);" onclick="toggleContent('summary-short-project-{{ current_project.id }}', 'summary-full-project-{{ current_project.id }}');">see less</a>
+            </div>
+            <!-- Add more details as needed -->
+        </div>
+    </section>
+
+    <!-- Latest Blog Posts Section -->
+    <section class="latest-blog-posts">
+        <h2>Latest Blog Posts</h2>
+ 
+        {% for post in latest_blog_posts %}
+        <div class="blog-post">
+            <h3>{{ post.title }}</h3>
+            <p id="excerpt-short-{{ post.id }}">
+                {{ post.excerpt|truncatewords:20 }}
+                <a href="javascript:void(0);" onclick="toggleContent('excerpt-short-{{ post.id }}', 'excerpt-full-{{ post.id }}');">see more</a>
+            </p>
+            <div id="excerpt-full-{{ post.id }}" class="excerpt-full" style="display:none;">
+                {{ post.excerpt }}
+                <a href="javascript:void(0);" onclick="toggleContent('excerpt-short-{{ post.id }}', 'excerpt-full-{{ post.id }}');">see less</a>
+            </div>
+        </div>
+        {% endfor %}
+  
+    </section>
+</main>
+
+<footer>
+    <!-- Add your footer content like contact info, social links, etc. here -->
+</footer>
+
+<script>
+// JavaScript for toggling the content
+function toggleContent(shortContentId, fullContentId) {
+    var shortContent = document.getElementById(shortContentId);
+    var fullContent = document.getElementById(fullContentId);
+    shortContent.style.display = shortContent.style.display === 'none' ? 'block' : 'none';
+    fullContent.style.display = fullContent.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+{% endblock %}

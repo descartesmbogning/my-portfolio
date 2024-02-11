@@ -1,0 +1,12 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="blog-detail-page">
+    <h1>{{ blog_post.title }}</h1>
+    <p>{{ blog_post.publish_date }}</p>
+    <div>
+        {{ blog_post.content|safe }}  <!-- Use the 'safe' filter if your content contains HTML -->
+    </div>
+</div>
+{% endblock %}

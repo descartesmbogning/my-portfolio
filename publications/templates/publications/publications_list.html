@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="publications-page">
+    <h1>Publications</h1>
+    <ol>
+        {% for publication in publications %}
+        <li>
+            {{ publication.authors }} ({{ publication.publication_date }}).
+            <strong>{{ publication.title }}</strong>,
+            <em>Published in: {{ publication.published_in }}</em>, <!-- Displaying journal as 'published in' -->
+            {% if publication.doi %} <!-- Displaying DOI -->
+            DOI: <a href="https://doi.org/{{ publication.doi }}" target="_blank">{{ publication.doi }}</a>,
+            {% endif %}
+            {% if publication.publication_link %} <!-- Displaying publication link -->
+            <a href="{{ publication.publication_link }}" target="_blank">Read Online</a>
+            {% endif %}
+            {% if publication.pdf_file %} <!-- Displaying link to PDF file if exists -->
+            <a href="{{ publication.pdf_file.url }}" target="_blank">Download PDF</a>
+            {% endif %}
+        </li>
+        {% empty %}
+        <li>No publications found.</li>
+        {% endfor %}
+    </ol>
+
+    <!-- Pagination links -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if publications.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ publications.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ publications.number }} of {{ publications.paginator.num_pages }}.
+            </span>
+
+            {% if publications.has_next %}
+                <a href="?page={{ publications.next_page_number }}">next</a>
+                <a href="?page={{ publications.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

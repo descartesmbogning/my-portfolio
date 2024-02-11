@@ -1,0 +1,139 @@
+
+<!-- home_page.html -->
+{% extends "base.html" %}  <!-- Assumes you have a base.html for common layout like header, footer -->
+
+{% block content %}
+<div class="home-page">
+    <!-- Welcome Section -->
+    {% if home_page_content %}
+    <section class="welcome-section">
+        <h1>Welcome to My Portfolio</h1>
+        <p>{{ home_page_content.welcome_message }}</p>
+        {% if home_page_content.headshot_image %}
+        <img src="{{ home_page_content.headshot_image.url }}" alt="Professional Headshot">
+        {% endif %}
+    </section>
+    {% endif %}
+
+
+    
+        <!-- Latest Publications -->
+        <section class="latest-publications">
+            <h2>Latest Publications</h2>
+            <ul>
+                {% for publication in latest_publications %}
+                <li class="publication-item">
+                    {% if publication.thumbnail %} <!-- Check if a thumbnail is available -->
+                    <img src="{{ publication.thumbnail.url }}" alt="Thumbnail" class="publication-thumbnail">
+                    {% endif %}
+                    <div class="publication-details">
+                        <strong>{{ publication.title }}</strong>,
+                        <em>Published in: {{ publication.published_in }}</em> ({{ publication.publication_date }}).
+                        <p>{{ publication.abstract|truncatewords:5 }}
+                            <a href="javascript:void(0);" onclick="toggleAbstract({{ publication.id }});">see more</a>
+                        </p>
+                        <div id="abstract-full-{{ publication.id }}" class="abstract-full" style="display:none;">
+                            {{ publication.abstract }}
+                        </div>
+                        {% if publication.publication_link %} <!-- Displaying publication link -->
+                        <a href="{{ publication.publication_link }}" target="_blank">Read Online</a>
+                        {% endif %}
+                        {% if publication.pdf_file %} <!-- Displaying link to PDF file if exists -->
+                        <a href="{{ publication.pdf_file.url }}" target="_blank">Download PDF</a>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    
+        <!-- ... Other sections ... -->
+    </div>
+    
+    <script>
+    // JavaScript for toggling the abstract
+    function toggleAbstract(publicationId) {
+        var fullAbstract = document.getElementById('abstract-full-' + publicationId);
+        if (fullAbstract.style.display === 'none') {
+            fullAbstract.style.display = 'block';
+        } else {
+            fullAbstract.style.display = 'none';
+        }
+    }
+    </script>
+    
+   
+
+
+    <!-- Current Project -->
+    {% if current_project %}
+    <section class="current-project">
+        
+        <h2>Current Project</h2>
+        <ul>
+            <li>
+                <h3>{{ current_project.title }}</h3>
+                <p id="summary-short-{{ current_project.id }}">
+                    {{ current_project.summary|truncatewords:20 }}
+                    <a href="javascript:void(0);" onclick="showFullSummary({{ current_project.id }});">see more</a>
+                </p>
+                <p id="summary-full-{{ current_project.id }}" style="display:none;">
+                    {{ current_project.summary }}
+                    <a href="javascript:void(0);" onclick="hideFullSummary({{ current_project.id }});">see less</a>
+                </p>
+                <!-- Add more details as needed -->
+            </li>
+        </ul>
+    </section>
+    {% endif %}
+
+    <script>
+    function showFullSummary(projectId) {
+        document.getElementById('summary-short-' + projectId).style.display = 'none';
+        document.getElementById('summary-full-' + projectId).style.display = 'block';
+    }
+
+    function hideFullSummary(projectId) {
+        document.getElementById('summary-short-' + projectId).style.display = 'block';
+        document.getElementById('summary-full-' + projectId).style.display = 'none';
+    }
+    </script>
+
+
+
+    <!-- Latest Blog Posts -->
+    <section class="latest-blog-posts">
+        <h2>Latest Blog Posts</h2>
+        <ul>
+            {% for post in latest_blog_posts %}
+            <li>
+                <h3>{{ post.title }}</h3>
+                <p id="excerpt-short-{{ post.id }}">
+                    {{ post.excerpt|truncatewords:20 }}
+                    <a href="javascript:void(0);" onclick="showFullExcerpt({{ post.id }});">see more</a>
+                </p>
+                <p id="excerpt-full-{{ post.id }}" style="display:none;">
+                    {{ post.excerpt }}
+                    <a href="javascript:void(0);" onclick="hideFullExcerpt({{ post.id }});">see less</a>
+                </p>
+                <!-- Add more details as needed -->
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+
+<script>
+function showFullExcerpt(postId) {
+    document.getElementById('excerpt-short-' + postId).style.display = 'none';
+    document.getElementById('excerpt-full-' + postId).style.display = 'block';
+}
+
+function hideFullExcerpt(postId) {
+    document.getElementById('excerpt-short-' + postId).style.display = 'block';
+    document.getElementById('excerpt-full-' + postId).style.display = 'none';
+}
+</script>
+
+<!-- ... Other scripts for existing sections ... -->
+{% endblock %}

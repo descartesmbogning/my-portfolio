@@ -1,0 +1,43 @@
+
+/* Add these styles to your CSS file or inside a <style> tag in base.html */
+
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.welcome-section {
+    background-color: #f9f9f9;
+}
+
+.latest-publications, .latest-blog-posts {
+    background-color: #ffffff;
+}
+
+.current-project {
+    background-color: #eef;
+}
+
+.publication-card, .project-details, .blog-post {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+.publication-thumbnail {
+    width: 100px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+}
+
+a {
+    color: #06f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

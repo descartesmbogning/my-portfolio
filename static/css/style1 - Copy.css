@@ -1,0 +1,90 @@
+
+/* style.css - Add this content to your main CSS file */
+/* CSS Variables for Easy Theme Management */
+:root {
+    /* Color Scheme */
+    --primary-color: #005f73;
+    --secondary-color: #0a9396;
+    --accent-color: #ee9b00;
+    --text-color: #333333; /* Updated for better contrast and readability */
+    --background-color: #f8f8f8; /* Light background for a clean look */
+
+    /* Typography */
+    --font-family-primary: 'Open Sans', sans-serif;
+    --font-family-secondary: 'Merriweather', serif;
+}
+
+/* General Styles */
+body, html {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header .nav-item {
+    margin-right: 20px;
+}
+
+header .nav-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+header .nav-link:hover {
+    color: #007bff;
+}
+
+/* Main Styles */
+main {
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+footer .social-media-links a {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .social-media-links a:hover {
+    color: #007bff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header .navbar-nav {
+        flex-direction: column;
+    }
+
+    header .nav-item {
+        margin-bottom: 10px;
+    }
+}

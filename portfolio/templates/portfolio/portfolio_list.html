@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="portfolio-page">
+    <h1>Portfolio</h1>
+    <div class="portfolio-items">
+        {% for item in portfolio_items %}
+        <div class="portfolio-item">
+            <h2>{{ item.title }}</h2>
+            {% if item.thumbnail_image %}
+            <img src="{{ item.thumbnail_image.url }}" alt="{{ item.title }}">
+            {% endif %}
+            <p>{{ item.summary|truncatewords:30 }}</p>
+            <a href="{{ item.get_absolute_url }}">Read More</a>  <!-- If you have a detail view for each portfolio item -->
+            <!-- Add more details as needed -->
+        </div>
+        {% empty %}
+        <p>No portfolio items found.</p>
+        {% endfor %}
+    </div>
+    <!-- Add pagination links if you're using pagination -->
+</div>
+{% endblock %}

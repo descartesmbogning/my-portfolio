@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="projects-page">
+    <h1>Projects</h1>
+    <ul>
+        {% for project in projects %}
+        <li>
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.summary|truncatewords:30 }}</p>
+            <p><strong>Technologies:</strong> {{ project.technologies }}</p>
+            <a href="{{ project.get_absolute_url }}">Read More</a>  <!-- If you have a detail view for each project -->
+            <!-- Add more details as needed -->
+        </li>
+        {% empty %}
+        <li>No projects found.</li>
+        {% endfor %}
+    </ul>
+    <!-- Add pagination links if you're using pagination -->
+</div>
+{% endblock %}

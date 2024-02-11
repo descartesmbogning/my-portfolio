@@ -1,0 +1,312 @@
+
+/* Enhanced style.css with Bootstrap and additional styles */
+
+/* Importing FontAwesome for social icons and Bootstrap CSS for responsive design */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+/* @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'); */
+
+/* style.css - Add this content to your main CSS file */
+/* CSS Variables for Easy Theme Management */
+:root {
+    /* Color Scheme */
+    --primary-color: #005f73; /* #2A3B47 */
+    --secondary-color: #0a9396;
+    --accent-color: #ee9b00;
+    --text-color: #333333; /* Updated for better contrast and readability */
+    --background-color: #f8f8f8; /* Light background for a clean look */
+    --footbackground-color : #f3eded;
+    --foottext-color: #333333;
+    /* Typography */
+    --font-family-primary: 'Open Sans', sans-serif;
+    --font-family-secondary: 'Merriweather', serif;
+
+
+    
+    --header-height: 3rem;
+    --font-medium: 500;
+}
+
+/* General Styles */
+/* Base Styles */
+body, html {
+    font-family: var(--font-family-primary);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    color: var(--primary-color);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e7e7e7;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+header .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+#navbar-logo {
+    max-height: 50px;
+}
+
+.navbar-toggler {
+    display: none;
+    /* Styling for the toggler can be added here */
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    padding: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.form-inline {
+    display: flex;
+}
+.form-control {
+    margin-right: 10px;
+} 
+
+.headshot-image{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Main Styles */
+main {
+    padding: 20px;
+}
+
+.headshot-image {
+    /* Assuming .home-section is your home area class */
+    background-image: url('D:\Desktop\mbogning\home\media\usa.JPG'); /* Update with your actual image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Set the height of the section if needed */
+    width: 100%; /* Set the width of the section if needed */
+}
+
+
+/* tuto add */
+/*===== NAV =====*/
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media screen and (max-width: 768px){
+    .nav__menu{
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 80%;
+        height: 100%;
+        padding: 2rem;
+        background-color: rgba(255,255,255,.3);
+        transition: .5s;
+        backdrop-filter: blur(10px);
+    }
+}
+.nav__item{
+    margin-bottom: var(--mb-4);
+}
+.nav__link{
+    position: relative;
+    color: var(--dark-color);
+}
+.nav__link:hover{
+    color: var(--first-color);
+}
+.nav__logo{
+    color: var(--white-color);
+}
+.nav__toggle{
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/*=== Show menu ===*/
+.show{
+    right: 0;
+}
+
+/*Active menu*/
+.active::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: .18rem;
+    left: 0;
+    top: 2rem;
+    background-color: var(--first-color);
+}
+
+
+/*===== HOME =====*/
+.welcome-section{
+    position: relative;
+    background-color: var(--first-color);
+    overflow: hidden;
+}
+.home__container{
+    height: calc(100vh - var(--header-height));
+    row-gap: 5rem;
+}
+.home__title{
+    align-self: flex-end;
+    font-size: var(--big-font-size);
+    color: var(--white-color);
+    line-height: .8;
+}
+.home__title span{
+    text-shadow: 0 20px 25px rgba(0,0,0,.5);
+}
+.home__scroll{
+    align-self: flex-end;
+    padding-bottom: var(--mb-4);
+}
+.home__scroll-link{
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+    color: var(--white-color);
+}
+.home__img{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 295px;
+}
+
+
+
+
+
+
+/* Footer Styles */
+footer {
+    background-color: var(--footbackground-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e7e7e7;
+}
+
+/* have to be center */
+.footer-content {
+    display: block;
+    justify-content: center; /*Horizontally center the content */
+    align-items: center; /* Vertically center the content (if needed) */
+    flex-wrap: center; 
+    text-align: center; /* Ensures the text and other inline elements inside the flex items are centered*/
+}
+
+
+.footer-content > div {
+    margin-bottom: 20px;
+}
+
+
+footer .social-media-links a {
+    color: var(--accent-color);
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .social-media-links a:hover {
+    color: var(--text-color);
+}
+
+
+
+.footer-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles
+@media (max-width: 768px) {
+    header .navbar-nav {
+        flex-direction: column;
+    }
+
+    header .nav-item {
+        margin-bottom: 10px;
+    }
+} */
+
+/* Responsive Design for the Navbar */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block;
+    }
+    .navbar-nav {
+        display: none;
+    }
+    .navbar-collapse {
+        display: flex;
+    }
+    .navbar-collapse.active {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

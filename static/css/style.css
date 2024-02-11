@@ -1,0 +1,156 @@
+
+/* Enhanced style.css with Bootstrap and additional styles */
+
+/* Importing FontAwesome for social icons and Bootstrap CSS for responsive design */
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'); */
+
+/* CSS Variables for Easy Theme Management */
+:root {
+    /* Color Scheme */
+    --primary-color: #005f73;
+    --secondary-color: #0a9396;
+    --accent-color: #ee9b00;
+    --text-color: #333333; /* Updated for better contrast and readability */
+    --background-color: #f8f8f8; /* Light background for a clean look */
+
+    /* Typography */
+    --font-family-primary: 'Open Sans', sans-serif;
+    --font-family-secondary: 'Merriweather', serif;
+}
+
+/* Base Styles */
+body, html {
+    font-family: var(--font-family-primary);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--primary-color);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e7e7e7;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+header .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+#navbar-logo {
+    max-height: 50px;
+}
+
+.navbar-toggler {
+    display: flex;
+    /* Styling for the toggler can be added here */
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    padding: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e7e7e7;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-content > div {
+    margin-bottom: 20px;
+}
+
+.social-media-links a {
+    margin: 0 10px;
+    color: var(--text-color);
+}
+
+.social-media-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design for the Navbar */
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block;
+    }
+    .navbar-nav {
+        display: flex;
+    }
+    .navbar-collapse {
+        display: flex;
+    }
+    .navbar-collapse.active {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,142 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <!-- Include FontAwesome for social icons (if you're using FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Include Bootstrap CSS for responsive design (optional, if you're using Bootstrap) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add the CSS styles directly within the template */
+        /* Header CSS */
+        header {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e7e7e7;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        #navbar-logo {
+            max-height: 50px;
+        }
+        .navbar-toggler {
+            display: none;
+        }
+        .navbar-nav {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-item {
+            padding: 0 15px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+        }
+        .nav-link:hover {
+            color: #007bff;
+        }
+        .form-inline {
+            display: flex;
+        }
+        .form-control {
+            margin-right: 10px;
+        }
+
+        /* Footer CSS */
+        footer {
+            background-color: #f8f8f8;
+            border-top: 1px solid #e7e7e7;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .footer-content > div {
+            margin-bottom: 20px;
+        }
+        .social-media-links a {
+            margin: 0 10px;
+            color: #333;
+        }
+        .social-media-links a:hover {
+            color: #007bff;
+        }
+        .footer-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design for the Navbar */
+        @media (max-width: 768px) {
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-nav {
+                display: none;
+            }
+            .navbar-collapse {
+                display: none;
+            }
+            .navbar-collapse.active {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        {% include 'header_html.html' %}
+    </header>
+
+    <!-- Main Content -->
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        {% include 'footer_html.html' %}
+    </footer>
+
+    <!-- Include Bootstrap JS for responsive design (optional, if you're using Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript for responsive navbar toggling
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbarToggler = document.querySelector('.navbar-toggler');
+            var navbarCollapse = document.querySelector('.navbar-collapse');
+
+            navbarToggler.addEventListener('click', function () {
+                navbarCollapse.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+{% endblock %}

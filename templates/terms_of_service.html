@@ -1,0 +1,27 @@
+{% load static %}  <!-- This should be the first line in your template -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - My Portfolio</title>
+    <!-- Add your CSS files here -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    {% include 'header_html.html' %}
+    <main>
+        <h1>Terms of Service</h1>
+        <p>
+            These are the Terms of Service for my portfolio website. 
+            By accessing this website we assume you accept these terms and conditions in full.
+            Do not continue to use the website if you do not accept all of the terms and conditions stated on this page.
+            <!-- Add more content here -->
+        </p>
+    </main>
+    {% include 'footer_html.html' %}
+    <!-- Add your JavaScript files here -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

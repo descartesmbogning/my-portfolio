@@ -1,0 +1,26 @@
+{% load static %}  <!-- This should be the first line in your template -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - My Portfolio</title>
+    <!-- Add your CSS files here -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'header_html.html' %}
+    <main>
+        <h1>Privacy Policy</h1>
+        <p>
+            This is the Privacy Policy for my portfolio website. 
+            Your privacy is critically important to us and we respect your privacy regarding any information we may collect while operating our website.
+            <!-- Add more content here -->
+        </p>
+    </main>
+    {% include 'footer_html.html' %}
+    <!-- Add your JavaScript files here -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

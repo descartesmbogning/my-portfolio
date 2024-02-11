@@ -1,0 +1,41 @@
+{% load static %}  <!-- Add this line at the top of your base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <!-- Add your CSS files here -->
+    <!-- Example: <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Navigation bar -->
+        <nav>
+            <ul>
+                <li><a href="{% url 'home_page' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'publications_list' %}">Publications</a></li>
+                <li><a href="{% url 'projects_list' %}">Projects</a></li>
+                <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'portfolio_list' %}">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Footer content -->
+        <p>&copy; {{ current_year }} My Portfolio</p>
+    </footer>
+    
+    <!-- Add your JavaScript files here -->
+    <!-- Example: <script src="{% static 'js/script.js' %}"></script> -->
+</body>
+</html>

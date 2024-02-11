@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="blog-list-page">
+    <h1>Blog</h1>
+    <ul>
+        {% for post in blog_posts %}
+        <li>
+            <h2><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h2>
+            <p>{{ post.publish_date }}</p>
+            <p>{{ post.excerpt|truncatewords:30 }}</p>
+        </li>
+        {% empty %}
+        <li>No blog posts found.</li>
+        {% endfor %}
+    </ul>
+    <!-- Add pagination links if you're using pagination -->
+</div>
+{% endblock %}

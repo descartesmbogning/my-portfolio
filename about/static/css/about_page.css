@@ -1,0 +1,37 @@
+
+/* Add these styles to your CSS file or inside a <style> tag in base.html */
+
+article.about-page {
+    /* Add styles for the about page */
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.professional-bio {
+    background-color: #f9f9f9;
+}
+
+.skills, .education {
+    background-color: #ffffff;
+}
+
+.skills ul, .education ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills li, .education li {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

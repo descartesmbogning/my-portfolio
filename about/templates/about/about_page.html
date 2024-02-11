@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <style>
+        /* Add the CSS styles directly within the template */
+        article.about-page {
+            /* Add styles for the about page */
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .professional-bio {
+            background-color: #f9f9f9;
+        }
+
+        .skills, .education {
+            background-color: #ffffff;
+        }
+
+        .skills ul, .education ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills li, .education li {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<article class="about-page">
+    <!-- Professional Bio -->
+    {% if professional_bio %}
+    <section class="professional-bio">
+        <h1>About Me</h1>
+        <p>{{ professional_bio.introduction }}</p>
+        <p>{{ professional_bio.biography }}</p>
+        {% if professional_bio.headshot_image %}
+        <img src="{{ professional_bio.headshot_image.url }}" alt="Professional Headshot" class="headshot-image">
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- Skills -->
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+            <li>{{ skill.name }}: {{ skill.description }} (Proficiency: {{ skill.proficiency_level }})</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="education">
+        <h2>Education</h2>
+        <ul>
+            {% for education in educations %}
+            <li>{{ education.degree }} from {{ education.institution }} - {{ education.year_completed }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</article>
+{% endblock %}

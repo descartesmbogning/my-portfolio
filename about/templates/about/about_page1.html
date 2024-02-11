@@ -1,0 +1,38 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="about-page">
+    <!-- Professional Bio -->
+    {% if professional_bio %}
+    <section class="professional-bio">
+        <h1>About Me</h1>
+        <p>{{ professional_bio.introduction }}</p>
+        <p>{{ professional_bio.biography }}</p>
+        {% if professional_bio.headshot_image %}
+        <img src="{{ professional_bio.headshot_image.url }}" alt="Professional Headshot">
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- Skills -->
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+            <li>{{ skill.name }}: {{ skill.description }} (Proficiency: {{ skill.proficiency_level }})</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="education">
+        <h2>Education</h2>
+        <ul>
+            {% for education in educations %}
+            <li>{{ education.degree }} from {{ education.institution }} - {{ education.year_completed }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+{% endblock %}

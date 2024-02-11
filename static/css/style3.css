@@ -1,0 +1,68 @@
+
+/* Enhanced style.css */
+
+/* CSS Variables for Easy Theme Management */
+:root {
+    /* Color Scheme */
+    --primary-color: #005f73;
+    --secondary-color: #0a9396;
+    --accent-color: #ee9b00;
+    --text-color: #001219;
+    --background-color: #e9d8a6;
+
+    /* Typography */
+    --font-family-primary: 'Open Sans', sans-serif;
+    --font-family-secondary: 'Merriweather', serif;
+}
+
+/* Base Styles */
+body, html {
+    font-family: var(--font-family-primary);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--primary-color);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Example: Stack navbar items vertically on small screens */
+    header nav ul {
+        flex-direction: column;
+    }
+}
